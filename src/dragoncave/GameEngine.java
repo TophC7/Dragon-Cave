@@ -8,6 +8,7 @@ public class GameEngine {
     private final Cave leftCave = new Cave();
     private final Cave rightCave = new Cave();
     private Random rand = new Random();
+    
 
     public void play() {
 
@@ -17,7 +18,7 @@ public class GameEngine {
         do {
 
             // creates flag to determine which cave has evil dragon
-            int rng = rand.nextInt(1);
+            int rng = rand.nextInt(2);
 
             //if 0 left cave has evil dragon
             //Otherwise rigt cave has evil drgaon
@@ -53,11 +54,13 @@ public class GameEngine {
                         "A land full of dragons. They seem to be everywhere no matter where you go. \n" +
                         "You walk and walk and find yourself standing in front of a Cave.  \n" +
                         "You enter and are given a choice left or right.\n" +
-                        "What will be your choice? l / r \n");
+                        "What will be your choice? l / r");
 
     }
 
     private boolean playAgain() {
+
+        System.out.println("Would you like to play again? y / n");
 
         return input.getInput(true).equals("y");
     }
