@@ -34,7 +34,7 @@ public class InputControl {
             return getInput(inPlayAgain);
 
         } catch (Exception e) {
-            System.out.println(e.getMessage());
+            System.out.println("Something went wrong try again.");
         }
 
         //if anyting goes abismally wrong try again
