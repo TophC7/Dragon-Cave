@@ -1,14 +1,17 @@
 package dragoncave;
 
 import java.util.Random;
+import java.util.Scanner;
 
 public class GameEngine {
 
-    private final InputControl input = new InputControl();
+    static Scanner input = new Scanner(System.in);
+    static InputControl inputControl = new InputControl();
+
+    // private final InputControl input = new InputControl();
     private final Cave leftCave = new Cave();
     private final Cave rightCave = new Cave();
     private Random rand = new Random();
-    
 
     public void play() {
 
@@ -20,8 +23,8 @@ public class GameEngine {
             // creates flag to determine which cave has evil dragon
             int rng = rand.nextInt(2);
 
-            //if 0 left cave has evil dragon
-            //Otherwise rigt cave has evil drgaon
+            // if 0 left cave has evil dragon
+            // Otherwise rigt cave has evil drgaon
             if (rng == 0) {
                 leftCave.setDragon(new Dragon(true));
                 rightCave.setDragon(new Dragon(false));
@@ -30,18 +33,21 @@ public class GameEngine {
                 rightCave.setDragon(new Dragon(true));
             }
 
-            //Displays game introduction
+            // Displays game introduction
             gameIntroduction();
 
-            //Checks which cave players wishes to go and displays its outcome
-            if (input.getInput(false).equals("l")) {
+            // gets player direction choice
+            String direction = inputControl.getLR(input.next());
+
+            // Checks which cave players wishes to go and displays its outcome
+            if (direction.equals("l")) {
                 leftCave.displayOutcome();
             } else {
                 rightCave.displayOutcome();
             }
 
-            //aks player if they wish to keep playing
-            restart = playAgain();
+            // aks player if they wish to keep playing
+            restart = playAgain(inputControl.getYN(input.next()));
 
         } while (restart);
 
@@ -58,11 +64,11 @@ public class GameEngine {
 
     }
 
-    private boolean playAgain() {
+    private boolean playAgain(String input) {
 
         System.out.println("Would you like to play again? y / n");
 
-        return input.getInput(true).equals("y");
+        return input.equals("y");
     }
 
 }
