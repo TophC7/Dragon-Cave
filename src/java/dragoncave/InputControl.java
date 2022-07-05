@@ -11,8 +11,21 @@ public class InputControl {
             throw new WrongInputException("Not l or r");
 
         } catch (WrongInputException e) {
-            System.out.println("Wrong Input Try Again. l / r?");
-            return getLR(answer);
+            boolean wrong = true;
+
+            do {
+
+                System.out.println("Wrong Input Try Again. l / r?");
+
+                answer = GameEngine.getInput().next();
+
+                if (answer.equals("l") || answer.equals("r")) {
+                    wrong = false;
+                }
+
+            } while (wrong);
+
+            return answer;
         }
     }
 
@@ -25,9 +38,24 @@ public class InputControl {
 
             throw new WrongInputException("Not y or n");
 
-        } catch (Exception e) {
-            System.out.println("Wrong Input Try Again. y / n?");
-            return getYN(answer);
+        } catch (WrongInputException e) {
+
+            boolean wrong = true;
+
+            do {
+
+                System.out.println("Wrong Input Try Again. y / n?");
+
+                answer = GameEngine.getInput().next();
+
+                if (answer.equals("y") || answer.equals("n")) {
+                    wrong = false;
+                }
+
+            } while (wrong);
+
+            return answer;
+
         }
     }
 }

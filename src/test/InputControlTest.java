@@ -1,13 +1,16 @@
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
+import java.io.ByteArrayInputStream;
+import java.util.Scanner;
+
 // import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import dragoncave.GameEngine;
 import dragoncave.InputControl;
-import dragoncave.WrongInputException;
 
 public class InputControlTest {
 
@@ -23,7 +26,12 @@ public class InputControlTest {
     void testGetLR() {
         assertEquals("l", inputControl.getLR("l"), "Not l");
         assertEquals("r", inputControl.getLR("r"), "Not r");
-        assertThrows(WrongInputException.class, () -> inputControl.getLR("moo"));
+
+        // user inputs wrong input moo so program should aks again for input and we
+        // inject l so it should pass test
+        ByteArrayInputStream in = new ByteArrayInputStream("l".getBytes());
+        GameEngine.setInput(new Scanner(in));
+        assertEquals("l", inputControl.getLR("moo"), "Not l");
 
     }
 
@@ -32,7 +40,13 @@ public class InputControlTest {
     void testGetYN() {
         assertEquals("y", inputControl.getYN("y"), "Not y");
         assertEquals("n", inputControl.getYN("n"), "Not n");
-        assertThrows(StackOverflowError.class, () -> inputControl.getYN("moo"));
+
+        // user inputs wrong input moo so program should aks again for input and we
+        // inject y so it should pass test
+        ByteArrayInputStream in = new ByteArrayInputStream("y".getBytes());
+        GameEngine.setInput(new Scanner(in));
+        assertEquals("y", inputControl.getYN("moo"), "Not y");
+
     }
 
     // @AfterEach

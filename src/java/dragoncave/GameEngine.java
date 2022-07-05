@@ -5,7 +5,8 @@ import java.util.Scanner;
 
 public class GameEngine {
 
-    static Scanner input = new Scanner(System.in);
+    private static Scanner input = new Scanner(System.in);
+
     static InputControl inputControl = new InputControl();
 
     // private final InputControl input = new InputControl();
@@ -47,10 +48,19 @@ public class GameEngine {
             }
 
             // aks player if they wish to keep playing
-            restart = playAgain(inputControl.getYN(input.next()));
+            System.out.println("Would you like to play again? y / n");
+            restart = inputControl.getYN(input.next()).equals("y");
 
         } while (restart);
 
+    }
+
+    public static Scanner getInput() {
+        return input;
+    }
+
+    public static void setInput(Scanner input) {
+        GameEngine.input = input;
     }
 
     private void gameIntroduction() {
@@ -62,13 +72,6 @@ public class GameEngine {
                         "You enter and are given a choice left or right.\n" +
                         "What will be your choice? l / r");
 
-    }
-
-    private boolean playAgain(String input) {
-
-        System.out.println("Would you like to play again? y / n");
-
-        return input.equals("y");
     }
 
 }
