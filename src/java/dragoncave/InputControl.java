@@ -2,6 +2,12 @@ package dragoncave;
 
 public class InputControl {
 
+    /**
+     * Makes sure answer is l or r promting for input again when its not
+     * 
+     * @param answer - answer from player
+     * @return l or r
+     */
     public String getLR(String answer) {
         try {
             if (answer.equals("l") || answer.equals("r")) {
@@ -29,6 +35,12 @@ public class InputControl {
         }
     }
 
+    /**
+     * Makes sure answer is y or n promting for input again when its not
+     * 
+     * @param answer - answer from player
+     * @return y or n
+     */
     public String getYN(String answer) {
         try {
 

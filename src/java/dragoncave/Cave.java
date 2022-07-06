@@ -2,7 +2,7 @@ package dragoncave;
 
 public class Cave {
 
-    //dragon inhibiting cave
+    // dragon inhibiting cave
     private Dragon dragon;
 
     public void setDragon(Dragon dragon) {
@@ -14,5 +14,5 @@ public class Cave {
         System.out.println(dragon.getOutcome());
 
     }
-    
+
 }

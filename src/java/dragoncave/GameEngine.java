@@ -6,10 +6,8 @@ import java.util.Scanner;
 public class GameEngine {
 
     private static Scanner input = new Scanner(System.in);
-
     static InputControl inputControl = new InputControl();
 
-    // private final InputControl input = new InputControl();
     private final Cave leftCave = new Cave();
     private final Cave rightCave = new Cave();
     private Random rand = new Random();
@@ -63,6 +61,9 @@ public class GameEngine {
         GameEngine.input = input;
     }
 
+    /**
+     * Prints out game introduction
+     */
     private void gameIntroduction() {
 
         System.out.println(
